@@ -6,6 +6,6 @@ Python3 使用到的模块：urllib、bs4、http.cookiejar、urllib.parse、stri
 ### test
 test目录下为5和6章节模块讲解用到的Python3代码。
 ### baike_spider
-baike_spider目录下为第7章爬取百度百科Python相关词条实战演练的代码，为节省时间将数量减少到了100个。
+baike_spider目录下为第7章爬取百度百科Python相关词条实战演练的Python3代码，为节省时间将数量减少到了100个。
 
 #### 共勉
