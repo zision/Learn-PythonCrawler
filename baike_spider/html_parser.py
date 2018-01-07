@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 class HtmlParser(object):
     def _get_new_urls(self, page_url, soup):
         new_urls = set()
-        links = soup.find_all('a', href=re.compile(r'/item/(.*)'))
+        links = soup.find_all('a', href=re.compile(r"/item/"))
         # 网址有变，表达式做了调整
         for link in links:
             new_url = link['href']
@@ -22,12 +22,14 @@ class HtmlParser(object):
         res_data['url'] = page_url
 
         # <dd class="lemmaWgt-lemmaTitle-title"> <h1>Python</h1>
-        title_node = soup.find('dd', class_='lemmaWgt-lemmaTitle-title"').find('h1')
+        title_node = soup.find('dd', class_='lemmaWgt-lemmaTitle-title').find('h1')
         res_data['title'] = title_node.get_text()
 
         # <div class="lemma-summary" label-module="lemmaSummary">
-        summary_nod = soup.find('div', class_='lemma-summary')
-        res_data['summary'] = summary_nod.get_text()
+        summary_node = soup.find('div', class_='lemma-summary')
+        if summary_node is None:
+            return
+        res_data['summary'] = summary_node.get_text()
 
         return res_data
 
