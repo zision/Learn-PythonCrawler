@@ -1,4 +1,6 @@
+import string
 from urllib import request
+from urllib.parse import quote
 
 
 class HtmlDownloader(object):
@@ -6,7 +8,8 @@ class HtmlDownloader(object):
         if url is None:
             return None
 
-        response = request.urlopen(url)
+        url_ = quote(url, safe=string.printable)
+        response = request.urlopen(url_)
 
         if response.getcode() != 200:
             return None
